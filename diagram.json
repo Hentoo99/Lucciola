@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "author": "Lucciola - test Voice Monkey",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "env": "micropython-20231005-v1.21.0" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 128.75,
+      "left": 172.8,
+      "rotate": 0,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 63.6,
+      "left": 253.4,
+      "attrs": { "color": "blue", "label": "GPIO2" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 176.6,
+      "left": 192,
+      "attrs": { "color": "green", "label": "TEST (GPIO4)" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:D2", "r1:1", "blue", [ "h0" ] ],
+    [ "r1:2", "led1:A", "blue", [ "v0" ] ],
+    [ "led1:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "esp:D4", "btn1:1.l", "green", [ "h0" ] ],
+    [ "btn1:2.l", "esp:GND.1", "black", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
